@@ -2,29 +2,7 @@
 GET http://localhost:3000/movies
 
 ###
-GET http://localhost:3000/movies?genre=fantasy
+GET http://localhost:3000/movies?genre=Sci-Fi
 
 ###
-GET http://localhost:3000/movies/9e6106f0-848b-4810-a11a-3d832a5610f9
-
-###
-POST http://localhost:3000/movies
-Content-Type: application/json
-
-{
-  "title": "The Dark Knight",
-  "year": 2008,
-  "director": "Christopher Nolan",
-  "duration": 152,
-  "poster": "https://i.ebayimg.com/images/g/yokAAOSw8w1YARbm/s-l1200.jpg",
-  "genre": ["Action", "Crime", "Drama"]
-}
-
-###
-PATCH http://localhost:3000/movies/6a360a18-c645-4b47-9a7b-2a71babbf3e0
-Content-Type: application/json
-
-{
-  "year": 2009
-}
-
+GET http://localhost:3000/movies/61d3fc4f-d27a-447b-8d20-97c642e72627

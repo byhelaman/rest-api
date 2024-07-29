@@ -1,2 +1,3 @@
 # Build/Dependencies
 node_modules/
+.db

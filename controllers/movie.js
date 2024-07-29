@@ -1,4 +1,5 @@
-import { MovieModel } from '../models/movie.js'
+import { MovieModel } from '../models/supabase/movie.js'
+// import { MovieModel } from '../models/local-file-system/movie.js'
 import { validateMovie, validatePartialMovie } from '../schemas/movie.js'
 
 export class MovieController {
@@ -10,7 +11,7 @@ export class MovieController {
 
   static async getById (req, res) {
     const { id } = req.params
-    const movie = await MovieModel.getById(id)
+    const movie = await MovieModel.getById({ id })
     if (movie) return res.json(movie)
     res.status(404).json({ message: 'Movie not found' })
   }
@@ -42,6 +43,6 @@ export class MovieController {
       return res.status(404).json({ message: 'Movie not found' })
     }
 
-    return res.status(204).json({ message: 'Movie deleted successfully' })
+    return res.json({ message: 'Movie deleted successfully' })
   }
 }
