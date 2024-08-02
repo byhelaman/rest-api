@@ -1,8 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
-
-const supabaseUrl = 'https://yvugsdohckrttgqsnqzf.supabase.co'
-const supabaseKey = process.env.SUPABASE_KEY ?? ''
-const supabase = createClient(supabaseUrl, supabaseKey)
+import { supabase } from '../../utils.js'
 
 export class MovieModel {
   static async getAll ({ genre }) {
@@ -10,11 +6,7 @@ export class MovieModel {
       genre_filter: genre
     })
 
-    if (error) {
-      console.error('Error fetching movies:', error)
-    }
-
-    return data
+    return { data, error }
   }
 
   static async getById ({ id }) {
@@ -22,11 +14,7 @@ export class MovieModel {
       movie_id_filter: id
     })
 
-    if (error) {
-      console.error('Error fetching movies:', error)
-    }
-
-    return data
+    return { data, error }
   }
 
   static async create ({ input }) {

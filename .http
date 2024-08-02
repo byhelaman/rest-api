@@ -1,3 +1,13 @@
+
+###
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "email": "fepamo1864@leacore.com",
+  "password": "fepamo1864@leacore.com"
+}
+
 ###
 GET http://localhost:3000/movies
 
@@ -6,3 +16,6 @@ GET http://localhost:3000/movies?genre=Sci-Fi
 
 ###
 GET http://localhost:3000/movies/61d3fc4f-d27a-447b-8d20-97c642e72627
+
+###
+GET https://rest-api-guz1.onrender.com/movies

@@ -28,4 +28,3 @@ export function validateMovie (object) {
 export function validatePartialMovie (object) {
   return movieSchema.partial().safeParse(object)
 }
-
