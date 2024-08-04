@@ -1,9 +1,11 @@
 import { supabase } from '../utils.js'
 
 export const authMiddleware = async (req, res, next) => {
-  const { data, error } = await supabase.auth.getUser()
+  const { access_token: accessToken } = req.cookies
 
-  if (error) {
+  const { data, error } = await supabase.auth.getUser(accessToken)
+
+  if (error || !accessToken) {
     return res.status(401).json({ message: 'Unauthorized: Authentication failed' })
   }
 

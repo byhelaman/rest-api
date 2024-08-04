@@ -3,4 +3,5 @@ import { AuthController } from '../controllers/auth.js'
 
 export const authRouter = Router()
 
-authRouter.post('/auth/signup', AuthController.signIn)
+authRouter.post('/auth/signin', AuthController.signIn)
+authRouter.post('/auth/signout', AuthController.signOut)

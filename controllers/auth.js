@@ -12,6 +12,25 @@ export class AuthController {
       return res.status(400).json({ message: 'Invalid email or password' })
     }
 
-    res.json({ messasge: 'Successfully signed in' })
+    res
+      .cookie('access_token', data.session.access_token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'strict'
+      })
+      .send({ message: 'Successfully signed in' })
+  }
+
+  static async signOut (req, res) {
+    const { access_token: accessToken } = req.cookies
+    const { error } = await AuthModel.signOut(accessToken)
+
+    if (error) {
+      return res.status(400).json({ message: 'Failed to sign out' })
+    }
+
+    res
+      .clearCookie('access_token')
+      .send({ message: 'Successfully signed out' })
   }
 }
