@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(corsMiddleware())
 app.use(cookieParser())
 
-app.use('/', authRouter)
+app.use('/auth', authRouter)
 app.use('/movies', authMiddleware, moviesRouter)
 
 app.listen(process.env.PORT, () => {
